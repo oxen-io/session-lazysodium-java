@@ -766,12 +766,12 @@ public abstract class LazySodium implements
     }
 
     @Override
-    public boolean cryptoScalarMultE25519NoClamp(byte[] q, byte[] n, byte[] p) {
+    public boolean cryptoScalarMultEd25519NoClamp(byte[] q, byte[] n, byte[] p) {
         return successful(getSodium().crypto_scalarmult_ed25519_noclamp(q, n, p));
     }
 
     @Override
-    public boolean cryptoScalarMultE25519BaseNoClamp(byte[] q, byte[] n) {
+    public boolean cryptoScalarMultEd25519BaseNoClamp(byte[] q, byte[] n) {
         return successful(getSodium().crypto_scalarmult_ed25519_base_noclamp(q, n));
     }
 
