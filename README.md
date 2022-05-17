@@ -4,8 +4,7 @@
 
 Lazysodium is a **complete** Java (JNA) wrapper over the [Libsodium](https://github.com/jedisct1/libsodium) library that provides developers with a **smooth and effortless** cryptography experience.
 
-[![Checks](https://github.com/terl/lazysodium-java/actions/workflows/primary.yml/badge.svg)](https://github.com/terl/lazysodium-java/actions/workflows/primary.yml)
-![Maven Central](https://img.shields.io/maven-central/v/com.goterl/lazysodium-java?color=%23fff&label=Maven%20Central)
+[![Checks](https://github.com/oxen-io/session-lazysodium-java/actions/workflows/primary.yml/badge.svg)](https://github.com/oxen-io/session-lazysodium-java/actions/workflows/primary.yml)
 
 ## Features
 

@@ -1017,6 +1017,16 @@ public class Sodium {
     public native int crypto_aead_aes256gcm_is_available();
 
 
+    public native void crypto_core_ed25519_scalar_add(byte[] z, byte[] x, byte[] y);
+
+    public native void crypto_core_ed25519_scalar_mul(byte[] z, byte[] x, byte[] y);
+
+    public native void crypto_core_ed25519_scalar_reduce(byte[] r, byte[] s);
+
+    public native int crypto_scalarmult_ed25519_noclamp(byte[] q, byte[] n, byte[] p);
+
+    public native int crypto_scalarmult_ed25519_base_noclamp(byte[] q, byte[] n);
+
     // Ristretto255
 
     public native int crypto_core_ristretto255_is_valid_point(byte[] p);

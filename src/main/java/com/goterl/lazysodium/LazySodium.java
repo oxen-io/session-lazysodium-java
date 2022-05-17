@@ -27,6 +27,7 @@ public abstract class LazySodium implements
         Base,
         Random,
         AEAD.Native, AEAD.Lazy,
+        Core.Native,
         GenericHash.Native, GenericHash.Lazy,
         ShortHash.Native, ShortHash.Lazy,
         SecureMemory.Native, SecureMemory.Lazy,
@@ -764,6 +765,15 @@ public abstract class LazySodium implements
         return Key.fromBytes(sharedKey);
     }
 
+    @Override
+    public boolean cryptoScalarMultEd25519NoClamp(byte[] q, byte[] n, byte[] p) {
+        return successful(getSodium().crypto_scalarmult_ed25519_noclamp(q, n, p));
+    }
+
+    @Override
+    public boolean cryptoScalarMultEd25519BaseNoClamp(byte[] q, byte[] n) {
+        return successful(getSodium().crypto_scalarmult_ed25519_base_noclamp(q, n));
+    }
 
     // -------------------------------------------|
     //// CRYPTO BOX
@@ -1273,7 +1283,7 @@ public abstract class LazySodium implements
 
 
     //// -------------------------------------------|
-    //// SECRET SCREAM
+    //// SECRET STREAM
     //// -------------------------------------------|
 
     @Override
@@ -2593,6 +2603,26 @@ public abstract class LazySodium implements
             }
             return new DetachedDecrypt(messageBytes, macBytes, charset);
         }
+    }
+
+
+    //// -------------------------------------------|
+    //// CORE
+    //// -------------------------------------------|
+
+    @Override
+    public void cryptoCoreEd25519ScalarAdd(byte[] z, byte[] x, byte[] y) {
+        getSodium().crypto_core_ed25519_scalar_add(z, x, y);
+    }
+
+    @Override
+    public void cryptoCoreEd25519ScalarMul(byte[] z, byte[] x, byte[] y) {
+        getSodium().crypto_core_ed25519_scalar_mul(z, x, y);
+    }
+
+    @Override
+    public void cryptoCoreEd25519ScalarReduce(byte[] r, byte[] s) {
+        getSodium().crypto_core_ed25519_scalar_reduce(r, s);
     }
 
 
