@@ -24,6 +24,8 @@ public interface DiffieHellman {
 
         boolean cryptoScalarMultBase(byte[] publicKey, byte[] secretKey);
         boolean cryptoScalarMult(byte[] shared, byte[] secretKey, byte[] publicKey);
+        boolean cryptoScalarMultE25519NoClamp(byte[] q, byte[] n, byte[] p);
+        boolean cryptoScalarMultE25519BaseNoClamp(byte[] q, byte[] n);
 
     }
 
