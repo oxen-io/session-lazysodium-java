@@ -49,21 +49,22 @@ public abstract class LazySodium implements
     protected final Charset charset;
     protected final MessageEncoder messageEncoder;
 
-    public LazySodium(Charset charset, MessageEncoder messageEncoder) {
-        this.charset = charset;
-        this.messageEncoder = messageEncoder;
-    }
+    public static Base64Facade base64Facade;
 
     public LazySodium() {
         this(StandardCharsets.UTF_8, new HexMessageEncoder());
     }
-
     public LazySodium(Charset charset) {
         this(charset, new HexMessageEncoder());
     }
 
     public LazySodium(MessageEncoder messageEncoder) {
         this(StandardCharsets.UTF_8, messageEncoder);
+    }
+
+    public LazySodium(Charset charset, MessageEncoder messageEncoder) {
+        this.charset = charset;
+        this.messageEncoder = messageEncoder;
     }
 
     public static Integer longToInt(long lng) {
@@ -266,9 +267,6 @@ public abstract class LazySodium implements
         }
         if (subKey.length < subKeyLen) {
             throw new IllegalArgumentException("Sub Key array is less than specified size");
-        }
-        if (masterKey.length != KeyDerivation.MASTER_KEY_BYTES) {
-            throw new IllegalArgumentException("Master key length is wrong: " + masterKey.length);
         }
         if (context.length != KeyDerivation.CONTEXT_BYTES) {
             throw new IllegalArgumentException("Context length is wrong: " + context.length);
